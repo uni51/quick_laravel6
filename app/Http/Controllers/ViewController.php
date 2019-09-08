@@ -85,4 +85,25 @@ class ViewController extends Controller
         ];
         return view('view.forelse', $data);
     }
+
+    public function master()
+    {
+        return view('view.master', [
+            'msg' => 'こんにちは、世界！',
+        ]);
+    }
+
+    public function comp()
+    {
+        return view('view.comp');
+    }
+
+    public function list()
+    {
+        $data = [
+            'records' => Book::all()
+        ];
+        return view('view.list', $data);
+    }
+
 }

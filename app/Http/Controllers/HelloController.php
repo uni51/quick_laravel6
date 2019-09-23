@@ -25,7 +25,7 @@ class HelloController extends Controller
     {
         $data = [
             'records' => Book::all()
-            
+
             // 生のSQL
             // 'records' => DB::select('SELECT * FROM books')
         ];

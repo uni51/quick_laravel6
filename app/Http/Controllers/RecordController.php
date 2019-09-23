@@ -57,4 +57,11 @@ class RecordController extends Controller
 
         return view('record.where', [ 'records' => $result ]);
     }
+
+    public function hasmany()
+    {
+        return view('record.hasmany', [
+            'book' => Book::find(1)
+        ]);
+    }
 }

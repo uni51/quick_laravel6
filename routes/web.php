@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Route::get('hello', 'HelloController@index');
 Route::get('hello/view', 'HelloController@view');
-Route::get('hello/list', 'HelloController@list');
+//Route::get('hello/list', 'HelloController@list');
+Route::get('hello/list', 'HelloController@list')->name('list');
+
 
 Route::get('view/escape', 'ViewController@escape');
 Route::get('view/comment', 'ViewController@comment');
@@ -33,6 +35,7 @@ Route::get('view/forelse', 'ViewController@forelse');
 Route::get('view/master', 'ViewController@master');
 Route::get('view/comp', 'ViewController@comp');
 Route::get('view/list', 'ViewController@list');
+
 
 // Route::get('route/param/{id}', 'RouteController@param');
 // Route::get('route/param/{id?}', 'RouteController@param');
@@ -52,6 +55,15 @@ Route::redirect('/hoge', '/', 301);
 Route::resource('articles', 'ArticleController');
 
 
+Route::get('ctrl/plain', 'CtrlController@plain');
+Route::get('ctrl/header', 'CtrlController@header');
+Route::get('ctrl/outJson', 'CtrlController@outJson');
+//Route::get('ctrl/outFile', 'CtrlController@outFile');
+Route::get('ctrl/outCsv', 'CtrlController@outCsv');
+Route::get('ctrl/redirectBasic', 'CtrlController@redirectBasic');
+Route::get('ctrl/index', 'CtrlController@index');
+Route::get('ctrl/form/{name?}', 'CtrlController@form');
+Route::POST('ctrl/result', 'CtrlController@result');
 
 // フォールバックルート
  Route::fallback(function () {

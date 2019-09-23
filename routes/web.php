@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\LogMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,6 +68,15 @@ Route::get('ctrl/form/{name?}', 'CtrlController@form');
 Route::POST('ctrl/result', 'CtrlController@result');
 Route::get('ctrl/upload', 'CtrlController@upload');
 Route::post('ctrl/uploadfile', 'CtrlController@uploadfile');
+// Route::get('ctrl/middle', 'CtrlController@middle');
+Route::get('ctrl/middle', 'CtrlController@middle')
+    ->middleware(LogMiddleware::class);
+// 一つのルートに対して、複数のミドルウェアを紐付けたい場合は、下記のように記載する
+// ->middleware(LogMiddleware::class, HogeMiddleWare::class);
+
+// Route::group(['middleware' => [ 'debug' ]], function () {
+//     Route::get('ctrl/middle', 'CtrlController@middle');
+//   });
 
 // フォールバックルート
  Route::fallback(function () {

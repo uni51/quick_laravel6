@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class CtrlController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware(function($request, $next) {
+    //         file_put_contents('./access.log', date('Y-m-d H:i:s'), FILE_APPEND);
+    //         return $next($request);
+    //     // })->only([ 'basic', 'basic2' ]); // basic、basic2アクションでのみミドルウェアを適用する（除外する場合は、onlyではなく、exceptメソッドを利用する）
+    //     });
+    // }
+
     public function plain()
     {
         return response('こんにちは、世界！', 200)
@@ -149,5 +159,10 @@ class CtrlController extends Controller
         return view('ctrl.upload', [
             'result' => $name.'をアップロードしました。'
         ]);
+    }
+
+    public function middle()
+    {
+        return 'log is recorded!!';
     }
 }

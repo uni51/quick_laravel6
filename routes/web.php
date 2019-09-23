@@ -64,6 +64,8 @@ Route::get('ctrl/redirectBasic', 'CtrlController@redirectBasic');
 Route::get('ctrl/index', 'CtrlController@index');
 Route::get('ctrl/form/{name?}', 'CtrlController@form');
 Route::POST('ctrl/result', 'CtrlController@result');
+Route::get('ctrl/upload', 'CtrlController@upload');
+Route::post('ctrl/uploadfile', 'CtrlController@uploadfile');
 
 // フォールバックルート
  Route::fallback(function () {

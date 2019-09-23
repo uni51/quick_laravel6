@@ -118,4 +118,36 @@ class CtrlController extends Controller
             ]);
         }
     }
+
+    // ファイルアップロード画面の表示
+    public function upload()
+    {
+        return view('ctrl.upload', [ 'result' => '' ]);
+    }
+
+    public function uploadfile(Request $req)
+    {
+        // ファイルが正しく指定されているかを判定
+        if (!$req->hasFile('upfile')) {
+            return 'ファイルを指定してください。';
+        }
+
+        // ファイルを取得
+        $file = $req->upfile;
+
+        // ファイルが正しくアップロードできているか
+        if (!$file->isValid()) {
+            return 'アップロードに失敗しました。';
+        }
+
+        // オリジナルのファイル名を取得
+        $name = $file->getClientOriginalName();
+
+        // アップロードファイルを保存（ファイルは、「/storage/app/files」ディレクトリ配下にアップロードされる）
+        $file->storeAs('files', $name);
+
+        return view('ctrl.upload', [
+            'result' => $name.'をアップロードしました。'
+        ]);
+    }
 }

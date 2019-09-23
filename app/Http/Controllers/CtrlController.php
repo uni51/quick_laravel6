@@ -117,9 +117,12 @@ class CtrlController extends Controller
 //        return view('ctrl.form', [
 //            'result' => 'こんにちは、'.$name.'さん！'
 //        ]);
+
+        // 名前欄が入力されているか、10文字以内か
         if (empty($name) || mb_strlen($name) > 10) {
+            // フォームを再表示
             return redirect('ctrl/form')
-                ->withInput()
+                ->withInput() // 入力値をフラッシュに保存
                 ->with('alert', '名前は必須、または、10文字以内で入力してください');
         } else {
             $req->flash();

@@ -78,6 +78,11 @@ Route::get('ctrl/middle', 'CtrlController@middle')
 //     Route::get('ctrl/middle', 'CtrlController@middle');
 //   });
 
+
+Route::get('state/recCookie', 'StateController@recCookie');
+Route::get('state/readCookie', 'StateController@readCookie');
+
+
 // フォールバックルート
  Route::fallback(function () {
      return view('route.error');

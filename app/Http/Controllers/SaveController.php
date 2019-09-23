@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Book;
+
+class SaveController extends Controller
+{
+    public function create()
+    {
+        return view('save.create');
+    }
+
+    public function store(Request $req)
+    {
+//        $this->validate($req, Book::$rules);
+        $b = new Book();
+        $b->fill($req->except('_token'))->save();
+
+        /* $b->isbn = $req->isbn;
+        $b->title = $req->title;
+        $b->price = $req->price;
+        $b->publisher = $req->publisher;
+        $b->published = $req->published;
+        $b->save(); */
+
+        return redirect('save/create');
+    }
+
+    public function edit($id)
+    {
+        return view('save.edit', [
+            'b' => Book::findOrFail($id)
+        ]);
+    }
+
+    public function update(Request $req, $id)
+    {
+        $b = Book::find($id);
+        $b->fill($req->except('_token', '_method'))->save();
+        return redirect('hello/list');
+    }
+}
